@@ -1,0 +1,85 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "referent",
+            "otherEntityName": "enseignant",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "stage"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "contact",
+            "otherEntityName": "contact",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "stage"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "etudiant",
+            "otherEntityName": "etudiant",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "stage"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "entreprise",
+            "otherEntityName": "partenaire",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateDebut",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "sujet",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lang",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "motscles",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "joursTravaille",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "salaire",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "finConv",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "finStage",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "soutenance",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "rapport",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20161013123832",
+    "entityTableName": "stage",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

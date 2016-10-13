@@ -1,0 +1,108 @@
+entity Contact {
+    nom String required,
+    prenom String required,
+    role String required,
+    sexe String,
+    tel String,
+    mail String required,
+    dateMaj ZonedDateTime required
+
+}
+
+entity Enseignant{
+    sesame String required,
+    sexe String,
+    nom String required,
+    prenom String required,
+    adresse String,
+    telPro String,
+    actif Boolean required,
+    dateMaj ZonedDateTime required
+}
+
+entity Partenaire {
+    siret String,
+    service String,
+    region String required,
+    codeActivity String required,
+    rue String,
+    cpltRue String,
+    codeDep String required,
+    ville String required,
+    telStd String,
+    url String,
+    commentaire String,
+    nomSignataire String,
+    effectif Long,
+    dateMaj ZonedDateTime required,
+
+}
+
+entity Enquete{
+    dateDebut ZonedDateTime required,
+    dureeEnquete String,
+    lien String required
+    
+}
+
+entity Etudiant{
+    nom String required,
+    prenom String required,
+    sexe String,
+    rue String,
+    ville String,
+    codeDep String,
+    telephone String,
+    premierEmploi String,
+    dernierEmploi String,
+    rechEmp Boolean,
+    dateMaj ZonedDateTime required
+}
+
+entity Stage {
+    dateDebut ZonedDateTime required,
+    sujet String,
+    lang String,
+    motscles String,
+    joursTravaille Long,
+    salaire Long,
+    finConv ZonedDateTime,
+    finStage ZonedDateTime,
+    soutenance ZonedDateTime,
+    rapport ZonedDateTime
+}
+
+relationship OneToMany {
+	Partenaire{contacts} to Contact{partenaire}
+}
+
+relationship OneToOne {
+	Stage{referent} to Enseignant
+}
+
+relationship OneToOne {
+	Stage{contact} to Contact
+}
+
+relationship OneToOne{
+	Stage{etudiant} to Etudiant{stage}
+}
+
+relationship ManyToOne{
+	Stage{entreprise} to Partenaire{stages}
+}
+
+relationship OneToMany{
+	Etudiant to Partenaire{stagiaires}
+}
+
+relationship ManyToMany{
+	Enquete{etudiants} to Etudiant{enquetes}
+}
+
+relationship OneToOne{
+	 Etudiant{users} to User
+ }
+relationship OneToOne{ 
+	 Partenaire{users} to User
+}

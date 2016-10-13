@@ -1,0 +1,166 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPartenaireLabel">Create or edit a Partenaire</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.partenaire.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.partenaire.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_siret">Siret</label>
+            <input type="text" class="form-control" name="siret" id="field_siret"
+                    ng-model="vm.partenaire.siret"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_service">Service</label>
+            <input type="text" class="form-control" name="service" id="field_service"
+                    ng-model="vm.partenaire.service"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_region">Region</label>
+            <input type="text" class="form-control" name="region" id="field_region"
+                    ng-model="vm.partenaire.region"
+                    required />
+            <div ng-show="editForm.region.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.region.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_codeActivity">Code Activity</label>
+            <input type="text" class="form-control" name="codeActivity" id="field_codeActivity"
+                    ng-model="vm.partenaire.codeActivity"
+                    required />
+            <div ng-show="editForm.codeActivity.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.codeActivity.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_rue">Rue</label>
+            <input type="text" class="form-control" name="rue" id="field_rue"
+                    ng-model="vm.partenaire.rue"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_cpltRue">Cplt Rue</label>
+            <input type="text" class="form-control" name="cpltRue" id="field_cpltRue"
+                    ng-model="vm.partenaire.cpltRue"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_codeDep">Code Dep</label>
+            <input type="text" class="form-control" name="codeDep" id="field_codeDep"
+                    ng-model="vm.partenaire.codeDep"
+                    required />
+            <div ng-show="editForm.codeDep.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.codeDep.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_ville">Ville</label>
+            <input type="text" class="form-control" name="ville" id="field_ville"
+                    ng-model="vm.partenaire.ville"
+                    required />
+            <div ng-show="editForm.ville.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.ville.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_telStd">Tel Std</label>
+            <input type="text" class="form-control" name="telStd" id="field_telStd"
+                    ng-model="vm.partenaire.telStd"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_url">Url</label>
+            <input type="text" class="form-control" name="url" id="field_url"
+                    ng-model="vm.partenaire.url"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_commentaire">Commentaire</label>
+            <input type="text" class="form-control" name="commentaire" id="field_commentaire"
+                    ng-model="vm.partenaire.commentaire"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_nomSignataire">Nom Signataire</label>
+            <input type="text" class="form-control" name="nomSignataire" id="field_nomSignataire"
+                    ng-model="vm.partenaire.nomSignataire"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_effectif">Effectif</label>
+            <input type="number" class="form-control" name="effectif" id="field_effectif"
+                    ng-model="vm.partenaire.effectif"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_dateMaj">Date Maj</label>
+                <div class="input-group">
+                    <input id="field_dateMaj" type="text" class="form-control" name="dateMaj" datetime-picker="{{dateformat}}" ng-model="vm.partenaire.dateMaj" is-open="vm.datePickerOpenStatus.dateMaj"
+                    required  />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('dateMaj')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            <div ng-show="editForm.dateMaj.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dateMaj.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dateMaj.$error.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_users">Users</label>
+            <select class="form-control" id="field_users" name="users" ng-model="vm.partenaire.users" ng-options="user as user.id for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_stagiaires">Stagiaires</label>
+            <select class="form-control" id="field_stagiaires" name="stagiaires" ng-model="vm.partenaire.stagiaires" ng-options="etudiant as etudiant.id for etudiant in vm.etudiants track by etudiant.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_stages">Stages</label>
+            <select class="form-control" id="field_stages" name="stages" ng-model="vm.partenaire.stages" ng-options="stage as stage.id for stage in vm.stages track by stage.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

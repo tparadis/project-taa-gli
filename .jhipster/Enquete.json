@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "enquetes",
+            "relationshipName": "etudiants",
+            "otherEntityName": "etudiant",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateDebut",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dureeEnquete",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lien",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20161013123830",
+    "entityTableName": "enquete",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

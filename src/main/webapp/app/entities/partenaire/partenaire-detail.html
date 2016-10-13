@@ -1,0 +1,87 @@
+
+<div>
+    <h2><span>Partenaire</span> {{vm.partenaire.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Siret</span></dt>
+        <dd>
+            <span>{{vm.partenaire.siret}}</span>
+        </dd>
+        <dt><span>Service</span></dt>
+        <dd>
+            <span>{{vm.partenaire.service}}</span>
+        </dd>
+        <dt><span>Region</span></dt>
+        <dd>
+            <span>{{vm.partenaire.region}}</span>
+        </dd>
+        <dt><span>Code Activity</span></dt>
+        <dd>
+            <span>{{vm.partenaire.codeActivity}}</span>
+        </dd>
+        <dt><span>Rue</span></dt>
+        <dd>
+            <span>{{vm.partenaire.rue}}</span>
+        </dd>
+        <dt><span>Cplt Rue</span></dt>
+        <dd>
+            <span>{{vm.partenaire.cpltRue}}</span>
+        </dd>
+        <dt><span>Code Dep</span></dt>
+        <dd>
+            <span>{{vm.partenaire.codeDep}}</span>
+        </dd>
+        <dt><span>Ville</span></dt>
+        <dd>
+            <span>{{vm.partenaire.ville}}</span>
+        </dd>
+        <dt><span>Tel Std</span></dt>
+        <dd>
+            <span>{{vm.partenaire.telStd}}</span>
+        </dd>
+        <dt><span>Url</span></dt>
+        <dd>
+            <span>{{vm.partenaire.url}}</span>
+        </dd>
+        <dt><span>Commentaire</span></dt>
+        <dd>
+            <span>{{vm.partenaire.commentaire}}</span>
+        </dd>
+        <dt><span>Nom Signataire</span></dt>
+        <dd>
+            <span>{{vm.partenaire.nomSignataire}}</span>
+        </dd>
+        <dt><span>Effectif</span></dt>
+        <dd>
+            <span>{{vm.partenaire.effectif}}</span>
+        </dd>
+        <dt><span>Date Maj</span></dt>
+        <dd>
+            <span>{{vm.partenaire.dateMaj | date:'medium'}}</span>
+        </dd>
+        <dt><span>Users</span></dt>
+        <dd>
+            {{vm.partenaire.users.id}}
+        </dd>
+        <dt><span>Stagiaires</span></dt>
+        <dd>
+            <a ui-sref="etudiant-detail({id:vm.partenaire.stagiaires.id})">{{vm.partenaire.stagiaires.id}}</a>
+        </dd>
+        <dt><span>Stages</span></dt>
+        <dd>
+            <a ui-sref="stage-detail({id:vm.partenaire.stages.id})">{{vm.partenaire.stages.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="partenaire-detail.edit({id:vm.partenaire.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

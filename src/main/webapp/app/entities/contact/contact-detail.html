@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span>Contact</span> {{vm.contact.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Nom</span></dt>
+        <dd>
+            <span>{{vm.contact.nom}}</span>
+        </dd>
+        <dt><span>Prenom</span></dt>
+        <dd>
+            <span>{{vm.contact.prenom}}</span>
+        </dd>
+        <dt><span>Role</span></dt>
+        <dd>
+            <span>{{vm.contact.role}}</span>
+        </dd>
+        <dt><span>Sexe</span></dt>
+        <dd>
+            <span>{{vm.contact.sexe}}</span>
+        </dd>
+        <dt><span>Tel</span></dt>
+        <dd>
+            <span>{{vm.contact.tel}}</span>
+        </dd>
+        <dt><span>Mail</span></dt>
+        <dd>
+            <span>{{vm.contact.mail}}</span>
+        </dd>
+        <dt><span>Date Maj</span></dt>
+        <dd>
+            <span>{{vm.contact.dateMaj | date:'medium'}}</span>
+        </dd>
+        <dt><span>Partenaire</span></dt>
+        <dd>
+            <a ui-sref="partenaire-detail({id:vm.contact.partenaire.id})">{{vm.contact.partenaire.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="contact-detail.edit({id:vm.contact.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm"> Edit</span>
+    </button>
+</div>

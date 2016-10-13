@@ -1,0 +1,93 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "users",
+            "otherEntityName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "etudiant"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "partenaire",
+            "otherEntityName": "partenaire",
+            "otherEntityRelationshipName": "stagiaires"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "stage",
+            "otherEntityName": "stage",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "etudiant"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "enquetes",
+            "otherEntityName": "enquete",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "etudiants"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "prenom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "sexe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rue",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ville",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "codeDep",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telephone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "premierEmploi",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dernierEmploi",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "rechEmp",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "dateMaj",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20161013123831",
+    "entityTableName": "etudiant",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

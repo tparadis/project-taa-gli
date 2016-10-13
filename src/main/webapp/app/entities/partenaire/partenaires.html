@@ -1,0 +1,111 @@
+<div>
+    <h2>Partenaires</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="partenaire.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs" >
+                        Create new Partenaire
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Query">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Siret</span></th>
+                    <th><span>Service</span></th>
+                    <th><span>Region</span></th>
+                    <th><span>Code Activity</span></th>
+                    <th><span>Rue</span></th>
+                    <th><span>Cplt Rue</span></th>
+                    <th><span>Code Dep</span></th>
+                    <th><span>Ville</span></th>
+                    <th><span>Tel Std</span></th>
+                    <th><span>Url</span></th>
+                    <th><span>Commentaire</span></th>
+                    <th><span>Nom Signataire</span></th>
+                    <th><span>Effectif</span></th>
+                    <th><span>Date Maj</span></th>
+                    <th><span>Users</span></th>
+                    <th><span>Stagiaires</span></th>
+                    <th><span>Stages</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="partenaire in vm.partenaires track by partenaire.id">
+                    <td><a ui-sref="partenaire-detail({id:partenaire.id})">{{partenaire.id}}</a></td>
+                    <td>{{partenaire.siret}}</td>
+                    <td>{{partenaire.service}}</td>
+                    <td>{{partenaire.region}}</td>
+                    <td>{{partenaire.codeActivity}}</td>
+                    <td>{{partenaire.rue}}</td>
+                    <td>{{partenaire.cpltRue}}</td>
+                    <td>{{partenaire.codeDep}}</td>
+                    <td>{{partenaire.ville}}</td>
+                    <td>{{partenaire.telStd}}</td>
+                    <td>{{partenaire.url}}</td>
+                    <td>{{partenaire.commentaire}}</td>
+                    <td>{{partenaire.nomSignataire}}</td>
+                    <td>{{partenaire.effectif}}</td>
+                    <td>{{partenaire.dateMaj | date:'medium'}}</td>
+                    <td>
+                        {{partenaire.users.id}}
+                    </td>
+                    <td>
+                        <a ui-sref="etudiant-detail({id:partenaire.stagiaires.id})">{{partenaire.stagiaires.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="stage-detail({id:partenaire.stages.id})">{{partenaire.stages.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="partenaire-detail({id:partenaire.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="partenaire.edit({id:partenaire.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="partenaire.delete({id:partenaire.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

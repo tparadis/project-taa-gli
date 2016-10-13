@@ -1,0 +1,10 @@
+version: '2'
+services:
+    project_taa_gli-elasticsearch:
+        container_name: project_taa_gli-elasticsearch
+        image: elasticsearch:2.4.0
+        # volumes:
+        #     - ~/volumes/jhipster/project_taa_gli/elasticsearch/:/usr/share/elasticsearch/data/
+        ports:
+            - 9200:9200
+            - 9300:9300
