@@ -5,14 +5,30 @@
         .module('projectTaaGliApp')
         .controller('EtudiantController', EtudiantController);
 
-    EtudiantController.$inject = ['$scope', '$state', 'Etudiant', 'EtudiantSearch'];
+    EtudiantController.$inject = ['$scope','Principal', '$state', 'Etudiant', 'EtudiantSearch'];
 
-    function EtudiantController ($scope, $state, Etudiant, EtudiantSearch) {
+    function EtudiantController ($scope,Principal, $state, Etudiant, EtudiantSearch) {
         var vm = this;
-        
+
         vm.etudiants = [];
         vm.search = search;
         vm.loadAll = loadAll;
+
+        vm.account = null;
+
+        //??? on recupere le compte connecté pour vérifier ces autorisations ???
+        $scope.$on('authenticationSuccess', function() {
+           getAccount();
+        });
+
+            getAccount();
+
+        function getAccount() {
+             Principal.identity().then(function(account) {
+                vm.account = account;
+                vm.isAuthenticated = Principal.isAuthenticated;
+                });
+             }
 
         loadAll();
 

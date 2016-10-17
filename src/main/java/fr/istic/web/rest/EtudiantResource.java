@@ -33,7 +33,7 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class EtudiantResource {
 
     private final Logger log = LoggerFactory.getLogger(EtudiantResource.class);
-        
+
     @Inject
     private EtudiantRepository etudiantRepository;
 
@@ -107,7 +107,10 @@ public class EtudiantResource {
                 .collect(Collectors.toList());
         }
         log.debug("REST request to get all Etudiants");
-        List<Etudiant> etudiants = etudiantRepository.findAll();
+
+        //changement de la requete
+        //on recupere seulement les etudiants lié au user connecté
+        List<Etudiant> etudiants = etudiantRepository.findByUserIsCurrentUser();
         return etudiants;
     }
 
@@ -152,7 +155,7 @@ public class EtudiantResource {
      * SEARCH  /_search/etudiants?query=:query : search for the etudiant corresponding
      * to the query.
      *
-     * @param query the query of the etudiant search 
+     * @param query the query of the etudiant search
      * @return the result of the search
      */
     @RequestMapping(value = "/_search/etudiants",

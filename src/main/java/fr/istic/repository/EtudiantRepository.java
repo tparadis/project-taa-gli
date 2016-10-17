@@ -11,5 +11,7 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface EtudiantRepository extends JpaRepository<Etudiant,Long> {
-
+    //on cherche l'etudiant lié au User connecté
+    @Query("select etudiant from Etudiant etudiant where etudiant.users.login = ?#{principal.username}")
+    List<Etudiant> findByUserIsCurrentUser();
 }
