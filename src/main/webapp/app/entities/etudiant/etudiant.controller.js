@@ -45,5 +45,6 @@
             EtudiantSearch.query({query: vm.searchQuery}, function(result) {
                 vm.etudiants = result;
             });
-        }    }
+        }    
+    }
 })();

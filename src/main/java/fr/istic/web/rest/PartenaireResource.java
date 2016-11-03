@@ -122,6 +122,26 @@ public class PartenaireResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    
+    /**
+     * GET  /partenaires/user/:id : get the "id" partenaire.
+     *
+     * @param id the id of the partenaire to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the partenaire, or with status 404 (Not Found)
+     */
+    @RequestMapping(value = "/partenaires/user/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public ResponseEntity<Partenaire> getPartenaireByUser(@PathVariable String id) {
+        log.debug("REST request to get Partenaire by user : {}", id);
+        Partenaire partenaire = partenaireRepository.findPartenaireByCurrentUser(id);
+        return Optional.ofNullable(partenaire)
+            .map(result -> new ResponseEntity<>(
+                result,
+                HttpStatus.OK))
+            .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
 
     /**
      * DELETE  /partenaires/:id : delete the "id" partenaire.

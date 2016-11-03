@@ -7,20 +7,9 @@
                 <div class="" ng-switch-when="true">
 
                    <div>You are logged in as user "{{vm.account.login}}".</div>
-                    <div>Hello {{vm.etudiants[0].prenom}} {{vm.etudiants[0].nom}}.</div>
-
-<!--
-                    <div class="table-responsive">
-                        <table class="jh-table table table-striped">
-                            <tr ng-repeat="etudiant in vm.etudiants track by etudiant.id">
-                                <td><a ui-sref="etudiant-detail({id:etudiant.id})">{{etudiant.id}}</a></td>
-                                <td>{{etudiant.nom}}</td>
-                                <td>{{etudiant.prenom}}</td>
-                            </tr>
-                        </table>
-                     </div>
+                   
                 </div>
--->
+
                 <div class="alert alert-warning" ng-switch-when="false">
                     If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
                 </div>
@@ -34,3 +23,4 @@
         </div>
     </div>
 </div>
+
