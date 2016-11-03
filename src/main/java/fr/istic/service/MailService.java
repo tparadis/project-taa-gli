@@ -17,6 +17,7 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -64,6 +65,29 @@ public class MailService {
             log.warn("E-mail could not be sent to user '{}', exception is: {}", to, e.getMessage());
         }
     }
+
+    @Async
+    public void sendEnqueteEmail(List<String> to, String content, boolean isMultipart, boolean isHtml) {
+        log.debug("Send e-mail[multipart '{}' and html '{}'] to '{}' with subject '{}' and content={}", isMultipart, isHtml, to, content);
+        for(String too : to){
+            // Prepare message using a Spring helper
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+             try {
+                 MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, CharEncoding.UTF_8);
+                 message.setTo(too);
+                 message.setFrom(jHipsterProperties.getMail().getFrom());
+                 message.setSubject("Enquete Etudiante");
+
+                 message.setText("Bonjour,\n\nNous vous remerçions de prendre un peu de vore temps poru répondre à notre enquête.\n"
+                 +"Voici le lien de l'enquête : "
+                 + content + "\n\nCordialement,\nLa Direction", isHtml);
+                 javaMailSender.send(mimeMessage);
+                 log.debug("Sent e-mail to User '{}'", too);
+
+             } catch (Exception e) {
+                 log.warn("E-mail could not be sent to user '{}', exception is: {}", to, e.getMessage()); }
+             }
+             }
 
     @Async
     public void sendActivationEmail(User user, String baseUrl) {

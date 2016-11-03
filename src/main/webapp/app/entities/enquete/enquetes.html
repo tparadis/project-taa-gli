@@ -56,6 +56,8 @@
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                    ng-click="sendMail(enquete.id)"><span class="glyphicon glyphicon-send"></span></button>
                             <button type="submit"
                                     ui-sref="enquete-detail({id:enquete.id})"
                                     class="btn btn-info btn-sm">

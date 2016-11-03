@@ -19,4 +19,7 @@ public interface EnqueteRepository extends JpaRepository<Enquete,Long> {
     @Query("select enquete from Enquete enquete left join fetch enquete.etudiants where enquete.id =:id")
     Enquete findOneWithEagerRelationships(@Param("id") Long id);
 
+    /** * Recupere l'email de tous les etudiants assciées à une enquete * @param id * @return */
+    @Query("select etudiant.users.email from Enquete enquete left join enquete.etudiants as etudiant where enquete.id =:id")
+    List<String> getStudentMail(@Param("id") Long id);
 }

@@ -5,14 +5,15 @@
         .module('projectTaaGliApp')
         .controller('EnqueteController', EnqueteController);
 
-    EnqueteController.$inject = ['$scope', '$state', 'Enquete', 'EnqueteSearch'];
+    EnqueteController.$inject = ['$scope', '$state', 'Enquete', 'EnqueteSearch','EnqueteSend','$log' ];
 
-    function EnqueteController ($scope, $state, Enquete, EnqueteSearch) {
+    function EnqueteController ($scope, $state, Enquete, EnqueteSearch, EnqueteSend,$log) {
         var vm = this;
-        
+
         vm.enquetes = [];
         vm.search = search;
         vm.loadAll = loadAll;
+        $scope.sendMail = sendMail;
 
         loadAll();
 
@@ -29,5 +30,10 @@
             EnqueteSearch.query({query: vm.searchQuery}, function(result) {
                 vm.enquetes = result;
             });
-        }    }
+        }
+           function sendMail(id) {
+               EnqueteSend.query({id: id});
+                console.log("sent");
+                  }
+     }
 })();

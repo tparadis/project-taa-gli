@@ -5,6 +5,7 @@ import fr.istic.domain.Enquete;
 
 import fr.istic.repository.EnqueteRepository;
 import fr.istic.repository.search.EnqueteSearchRepository;
+import fr.istic.service.MailService;
 import fr.istic.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,12 +34,15 @@ import static org.elasticsearch.index.query.QueryBuilders.*;
 public class EnqueteResource {
 
     private final Logger log = LoggerFactory.getLogger(EnqueteResource.class);
-        
+
     @Inject
     private EnqueteRepository enqueteRepository;
 
     @Inject
     private EnqueteSearchRepository enqueteSearchRepository;
+
+    @Inject
+    private MailService mail;
 
     /**
      * POST  /enquetes : Create a new enquete.
@@ -86,6 +90,27 @@ public class EnqueteResource {
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert("enquete", enquete.getId().toString()))
             .body(result);
+    }
+
+
+    /**
+     * GET  /enquetes/send/:id : get the "id" enquete.
+     *
+     * @param id the id of the enquete to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the enquete, or with status 404 (Not Found)
+     */
+    @RequestMapping(value = "/enquetes/send/{id}",
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public List<String> getMail(@PathVariable Long id) {
+        log.debug("REST request to get Enquete : {}", id);
+        List<String> str = enqueteRepository.getStudentMail(id);
+        Enquete enquete = enqueteRepository.getOne(id);
+        mail.sendEmail("matthieu1.legendre@laposte.net", "test", "test", false, false);
+        //mail.sendEnqueteEmail(str, enquete.getLien(), false, true);
+
+        return str;
     }
 
     /**
@@ -144,7 +169,7 @@ public class EnqueteResource {
      * SEARCH  /_search/enquetes?query=:query : search for the enquete corresponding
      * to the query.
      *
-     * @param query the query of the enquete search 
+     * @param query the query of the enquete search
      * @return the result of the search
      */
     @RequestMapping(value = "/_search/enquetes",
